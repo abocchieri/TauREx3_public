@@ -163,7 +163,7 @@ class Plotter(object):
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1, prop={'size':11}, frameon=False)
         if self.title:
             plt.title(self.title+' - Active', fontsize=14)
-        plt.savefig(os.path.join(self.out_folder, '%s_fit_active_mixratio.pdf' % (self.prefix)))
+        plt.savefig(os.path.join(self.out_folder, '%s_fit_active_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
         plt.close('all')
 
         for solution_idx, solution_val in self.solution_iter():
@@ -211,7 +211,7 @@ class Plotter(object):
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1, prop={'size':11}, frameon=False)
         if self.title:
             plt.title(self.title+'- Inactive', fontsize=14)
-        plt.savefig(os.path.join(self.out_folder, '%s_fit_inactive_mixratio.pdf' % (self.prefix)))
+        plt.savefig(os.path.join(self.out_folder, '%s_fit_inactive_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
         plt.close('all')
 
 
@@ -254,7 +254,7 @@ class Plotter(object):
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1, prop={'size':11}, frameon=False)
         if self.title:
             plt.title(self.title+' - Active', fontsize=14)
-        plt.savefig(os.path.join(self.out_folder, '%s_fit_active_mixratio.pdf' % (self.prefix)))
+        plt.savefig(os.path.join(self.out_folder, '%s_fit_active_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
         plt.close()
 
 
@@ -285,7 +285,7 @@ class Plotter(object):
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1, prop={'size':11}, frameon=False)
         if self.title:
             plt.title(self.title+' - Inactive', fontsize=14)
-        plt.savefig(os.path.join(self.out_folder, '%s_fit_inactive_mixratio.pdf' % (self.prefix)))
+        plt.savefig(os.path.join(self.out_folder, '%s_fit_inactive_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
         plt.close()
 
     def plot_forward_cprofile(self):
@@ -332,7 +332,7 @@ class Plotter(object):
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1, prop={'size':11}, frameon=False)
         if self.title:
             plt.title(self.title, fontsize=14)
-        plt.savefig(os.path.join(self.out_folder, '%s_fit_condensate_mixratio.pdf' % (self.prefix)))
+        plt.savefig(os.path.join(self.out_folder, '%s_fit_condensate_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
         plt.close()
 
 
@@ -367,7 +367,7 @@ class Plotter(object):
         legend.get_frame().set_alpha(0.8)
         if self.title:
             plt.title(self.title, fontsize=14)
-        plt.savefig(os.path.join(self.out_folder, '%s_tp_profile.pdf' % (self.prefix)))
+        plt.savefig(os.path.join(self.out_folder, '%s_tp_profile.pdf' % (self.prefix)), bbox_inches='tight')
         plt.close()
 
     def plot_forward_tp(self):
@@ -393,7 +393,7 @@ class Plotter(object):
         legend.get_frame().set_alpha(0.8)
         if self.title:
             plt.title(self.title, fontsize=14)
-        plt.savefig(os.path.join(self.out_folder, '%s_tp_profile.pdf' % (self.prefix)))
+        plt.savefig(os.path.join(self.out_folder, '%s_tp_profile.pdf' % (self.prefix)), bbox_inches='tight')
         plt.close()
 
 
@@ -480,7 +480,7 @@ class Plotter(object):
                     xytext=(0, -5), textcoords="offset points",
                     ha="center", va="top", fontsize=14)
         if save:
-            plt.savefig(os.path.join(self.out_folder, '%s_posteriors.pdf' % (self.prefix)))
+            plt.savefig(os.path.join(self.out_folder, '%s_posteriors.pdf' % (self.prefix)), bbox_inches='tight')
             plt.close()
         else:
             return fig
@@ -548,7 +548,7 @@ class Plotter(object):
         if self.title:
             plt.title(self.title, fontsize=14)
         plt.tight_layout()
-        plt.savefig(os.path.join(self.out_folder, '%s_spectrum.pdf'  % (self.prefix)))
+        plt.savefig(os.path.join(self.out_folder, '%s_spectrum.pdf'  % (self.prefix)), bbox_inches='tight')
         plt.close()
 
 
@@ -584,7 +584,7 @@ class Plotter(object):
         if self.title:
             plt.title(self.title, fontsize=14)
         plt.tight_layout()
-        plt.savefig(os.path.join(self.out_folder, '%s_forward_spectrum.pdf'  % (self.prefix)))
+        plt.savefig(os.path.join(self.out_folder, '%s_forward_spectrum.pdf'  % (self.prefix)), bbox_inches='tight')
         plt.close()
 
     def plot_fitted_contrib(self,full=False,resolution=None):
@@ -609,7 +609,7 @@ class Plotter(object):
 
 
             #plt.tight_layout()
-            plt.savefig(os.path.join(self.out_folder, '%s_spectrum_contrib_sol%i.pdf'  % (self.prefix,solution_idx)))
+            plt.savefig(os.path.join(self.out_folder, '%s_spectrum_contrib_sol%i.pdf'  % (self.prefix,solution_idx)), bbox_inches='tight')
             plt.close()
 
         plt.close('all')
@@ -633,7 +633,7 @@ class Plotter(object):
 
 
         #plt.tight_layout()
-        plt.savefig(os.path.join(self.out_folder, '%s_spectrum_contrib_forward.pdf'  % (self.prefix)))
+        plt.savefig(os.path.join(self.out_folder, '%s_spectrum_contrib_forward.pdf'  % (self.prefix)), bbox_inches='tight')
         plt.close()
 
 
@@ -770,7 +770,7 @@ class Plotter(object):
 
         self._plot_tau(contribution,pressure,wavelength)
 
-        plt.savefig(os.path.join(self.out_folder, '%s_tau_forward.pdf' % (self.prefix)))
+        plt.savefig(os.path.join(self.out_folder, '%s_tau_forward.pdf' % (self.prefix)), bbox_inches='tight')
 
         plt.close()
 
@@ -787,7 +787,7 @@ class Plotter(object):
 
             self._plot_tau(contribution,pressure,wavelength)
 
-            plt.savefig(os.path.join(self.out_folder, '%s_tau_sol%i.pdf' % (self.prefix,solution_idx)))
+            plt.savefig(os.path.join(self.out_folder, '%s_tau_sol%i.pdf' % (self.prefix,solution_idx)), bbox_inches='tight')
 
             plt.close()
 
