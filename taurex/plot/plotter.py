@@ -254,7 +254,7 @@ class Plotter(object):
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1, prop={'size':11}, frameon=False)
         if self.title:
             plt.title(self.title+' - Active', fontsize=14)
-        plt.savefig(os.path.join(self.out_folder, '%s_fit_active_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
+        plt.savefig(os.path.join(self.out_folder, '%s_forward_active_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
         plt.close()
 
 
@@ -285,7 +285,7 @@ class Plotter(object):
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1, prop={'size':11}, frameon=False)
         if self.title:
             plt.title(self.title+' - Inactive', fontsize=14)
-        plt.savefig(os.path.join(self.out_folder, '%s_fit_inactive_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
+        plt.savefig(os.path.join(self.out_folder, '%s_forward_inactive_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
         plt.close()
 
     def plot_forward_cprofile(self):
