@@ -116,3 +116,6 @@ pytest.ini
 taurex/external/__init__.py
 taurex/external/contrib_tau.c
 taurex/external/contrib_tau.pyx
+
+# .idea
+.idea/
