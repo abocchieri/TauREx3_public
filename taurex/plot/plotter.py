@@ -488,7 +488,7 @@ class Plotter(object):
 
     @property
     def modelType(self):
-        return self.fd['ModelParameters']['model_type'][()]
+        return self.fd['ModelParameters']['model_type'][()].decode('utf-8')
 
     def count_contributions(self,spectra):
         pass
