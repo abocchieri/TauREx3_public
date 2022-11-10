@@ -749,7 +749,7 @@ class Plotter(object):
                 binned_error = None
 
         good = binned_spectrum > 0        
-        plt.plot(wlgrid[good], binned_spectrum[good], label=label,alpha=alpha)          
+        plt.plot(wlgrid[good], binned_spectrum[good], label=label, color=color, alpha=alpha)          
         if binned_error is not None:
             plt.fill_between(wlgrid[good], binned_spectrum[good]-binned_error[good],
                                 binned_spectrum[good]+binned_error[good],
