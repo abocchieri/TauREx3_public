@@ -157,10 +157,12 @@ class Plotter(object):
         plt.xlim(1e-12, 3)
         plt.xlabel('Mixing ratio')
         plt.ylabel('Pressure (bar)')
-        plt.tight_layout()
         box = ax.get_position()
-        ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
-        ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1, prop={'size':11}, frameon=False)
+        ax.set_position([box.x0, box.y0 + box.height * 0.1,
+                        box.width, box.height * 0.9])
+        # Put a legend below current axis        
+        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.18),
+                fancybox=True, shadow=True, ncol=5)     
         if self.title:
             plt.title(self.title+' - Active', fontsize=14)
         plt.savefig(os.path.join(self.out_folder, '%s_fit_active_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
@@ -205,10 +207,12 @@ class Plotter(object):
         plt.xlim(1e-12, 3)
         plt.xlabel('Mixing ratio')
         plt.ylabel('Pressure (bar)')
-        plt.tight_layout()
         box = ax.get_position()
-        ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
-        ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1, prop={'size':11}, frameon=False)
+        ax.set_position([box.x0, box.y0 + box.height * 0.1,
+                        box.width, box.height * 0.9])
+        # Put a legend below current axis        
+        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.18),
+                fancybox=True, shadow=True, ncol=5)     
         if self.title:
             plt.title(self.title+'- Inactive', fontsize=14)
         plt.savefig(os.path.join(self.out_folder, '%s_fit_inactive_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
@@ -248,10 +252,12 @@ class Plotter(object):
         plt.xlim(1e-12, 3)
         plt.xlabel('Mixing ratio')
         plt.ylabel('Pressure (bar)')
-        plt.tight_layout()
         box = ax.get_position()
-        ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
-        ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1, prop={'size':11}, frameon=False)
+        ax.set_position([box.x0, box.y0 + box.height * 0.1,
+                        box.width, box.height * 0.9])
+        # Put a legend below current axis
+        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.18),
+                fancybox=True, shadow=True, ncol=5)  
         if self.title:
             plt.title(self.title+' - Active', fontsize=14)
         plt.savefig(os.path.join(self.out_folder, '%s_forward_active_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
@@ -279,10 +285,12 @@ class Plotter(object):
         plt.xlim(1e-12, 3)
         plt.xlabel('Mixing ratio')
         plt.ylabel('Pressure (bar)')
-        plt.tight_layout()
         box = ax.get_position()
-        ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
-        ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1, prop={'size':11}, frameon=False)
+        ax.set_position([box.x0, box.y0 + box.height * 0.1,
+                        box.width, box.height * 0.9])
+        # Put a legend below current axis
+        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.18),
+                fancybox=True, shadow=True, ncol=5)        
         if self.title:
             plt.title(self.title+' - Inactive', fontsize=14)
         plt.savefig(os.path.join(self.out_folder, '%s_forward_inactive_mixratio.pdf' % (self.prefix)), bbox_inches='tight')
@@ -326,7 +334,6 @@ class Plotter(object):
         plt.xlim(1e-12, 3)
         plt.xlabel('Mixing ratio')
         plt.ylabel('Pressure (bar)')
-        plt.tight_layout()
         box = ax.get_position()
         ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), ncol=1, prop={'size':11}, frameon=False)
@@ -359,7 +366,7 @@ class Plotter(object):
         plt.gca().invert_yaxis()
         plt.xlabel('Temperature (K)')
         plt.ylabel('Pressure (bar)')
-        plt.tight_layout()
+        
         legend = plt.legend(loc='upper left', ncol=1, prop={'size':11})
         legend.get_frame().set_facecolor('white')
         legend.get_frame().set_edgecolor('white')
@@ -379,13 +386,13 @@ class Plotter(object):
 
         temp_prof = solution_val['Profiles']['temp_profile'][:]
         pres_prof = solution_val['Profiles']['pressure_profile'][:]/1e5
-        plt.plot(temp_prof, pres_prof)
+        plt.plot(temp_prof, pres_prof, label='Forward model')
 
         plt.yscale('log')
         plt.gca().invert_yaxis()
         plt.xlabel('Temperature (K)')
         plt.ylabel('Pressure (bar)')
-        plt.tight_layout()
+        
         legend = plt.legend(loc='upper left', ncol=1, prop={'size':11})
         legend.get_frame().set_facecolor('white')
         legend.get_frame().set_edgecolor('white')
@@ -547,7 +554,7 @@ class Plotter(object):
         plt.legend(loc='best', ncol=2, frameon=False, prop={'size':11})
         if self.title:
             plt.title(self.title, fontsize=14)
-        plt.tight_layout()
+        
         plt.savefig(os.path.join(self.out_folder, '%s_spectrum.pdf'  % (self.prefix)), bbox_inches='tight')
         plt.close()
 
@@ -566,7 +573,7 @@ class Plotter(object):
             wlgrid = spectra_out['native_wlgrid'][...]
         
     
-        self._generic_plot(wlgrid,native_grid,spectra_out,resolution=resolution,alpha=1,label=self.modelType)
+        self._generic_plot(wlgrid,native_grid,spectra_out,resolution=resolution,alpha=1,label='Forward model')
         plt.xlim(np.min(wlgrid)-0.05*np.min(wlgrid), np.max(wlgrid)+0.05*np.max(wlgrid))
         # plt.ylim(0.0,0.006)
         plt.xlabel(r'Wavelength ($\mu$m)')
@@ -583,7 +590,7 @@ class Plotter(object):
         plt.legend(loc='best', ncol=2, frameon=False, prop={'size':11})
         if self.title:
             plt.title(self.title, fontsize=14)
-        plt.tight_layout()
+        
         plt.savefig(os.path.join(self.out_folder, '%s_forward_spectrum.pdf'  % (self.prefix)), bbox_inches='tight')
         plt.close()
 
@@ -608,7 +615,6 @@ class Plotter(object):
             self._plot_contrib(solution_val,wlgrid,ax,full=full,resolution=resolution)
 
 
-            #plt.tight_layout()
             plt.savefig(os.path.join(self.out_folder, '%s_spectrum_contrib_sol%i.pdf'  % (self.prefix,solution_idx)), bbox_inches='tight')
             plt.close()
 
@@ -628,11 +634,10 @@ class Plotter(object):
         except KeyError:
             wlgrid = spectra_out['native_wlgrid'][...]
 
-        self._generic_plot(wlgrid,native_grid,spectra_out,resolution=resolution,alpha=0.5)
+        self._generic_plot(wlgrid,native_grid,spectra_out,resolution=resolution,color='black',alpha=0.5,label='Forward model')
         self._plot_contrib(self.forward_output(),wlgrid,ax,full=full,resolution=resolution)
 
 
-        #plt.tight_layout()
         plt.savefig(os.path.join(self.out_folder, '%s_spectrum_contrib_forward.pdf'  % (self.prefix)), bbox_inches='tight')
         plt.close()
 
