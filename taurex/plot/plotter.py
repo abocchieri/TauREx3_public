@@ -566,7 +566,7 @@ class Plotter(object):
             wlgrid = spectra_out['native_wlgrid'][...]
         
     
-        self._generic_plot(wlgrid,native_grid,spectra_out,resolution=resolution,alpha=1)
+        self._generic_plot(wlgrid,native_grid,spectra_out,resolution=resolution,alpha=1,label=self.modelType)
         plt.xlim(np.min(wlgrid)-0.05*np.min(wlgrid), np.max(wlgrid)+0.05*np.max(wlgrid))
         # plt.ylim(0.0,0.006)
         plt.xlabel(r'Wavelength ($\mu$m)')
@@ -793,7 +793,9 @@ class Plotter(object):
 
     def _plot_tau(self,contribution,pressure,wavelength):
         grid = plt.GridSpec(1, 4, wspace=0.4, hspace=0.3)
-        fig = plt.figure('Contribution function')
+        fig = plt.figure()
+        if self.title:
+            fig.suptitle(self.title)
         ax1 = plt.subplot(grid[0, :3])
         plt.imshow(contribution, aspect='auto')
 
